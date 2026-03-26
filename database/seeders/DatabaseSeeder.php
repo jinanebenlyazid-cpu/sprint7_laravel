@@ -15,11 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+         User::create([
+        'login' => 'testuser',
+        'nom' => 'Test',
+        'prenom' => 'User',
+        'email' => 'test@example.com',
+        'tel' => '0600000000',
+        'role' => 'admin',
+        'password' => bcrypt('123456'),
+    ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+    $this->call([
+        VoyageSeeder::class,
+    ]);
     }
 }
